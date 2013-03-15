@@ -9,11 +9,11 @@ card decks
 Aisleriot holds a collection of card decks, these decks are distributed under the same license as Aisleriot 
 itself and might be useful for other games, too.
 
-Additional information
+additional information
 ======================
 https://live.gnome.org/Aisleriot/Games contains a list of the over 80 card games in Aisleriot.
 
-External Links
+external Links
 ==============
 
 * http://en.wikipedia.org/wiki/Solitaire
