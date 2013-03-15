@@ -1,8 +1,13 @@
 aisleriot
 =========
-gnome-aisleriot.png Aisleriot (also known as Solitaire or sol) is a collection of card games
+Aisleriot (also known as Solitaire or sol) is a collection of card games
 which are easy to play with the aid of a mouse. The rules for the games have been coded for
 your pleasure in the GNOME scripting language (Scheme). 
+
+card decks
+==========
+Aisleriot holds a collection of card decks, these decks are distributed under the same license as Aisleriot 
+itself and might be useful for other games, too.
 
 Additional information
 ======================
