@@ -11,6 +11,18 @@ CARDS_PER_LINE = {0: ['king', 'queen', 'jack'],
                   1: ['1', '10', '9'],
                   2: ['8', '7', '6'],
                   }
+TEMPLATE = '''<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="744.09448" height="1052.3622" viewBox="-2 -2 756.65304 1063.7699" id="svg10047">
+  <metadata id="metadata16869">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>'''
 
 def main(how_many_cards, deck_name):
    """print the desired cards of the deck
@@ -22,7 +34,7 @@ def main(how_many_cards, deck_name):
    """
 
    ## read the deck
-   d = pq(filename="/usr/share/aisleriot/cards/deutschschweizerblatt.svg")
+   d = pq(filename=deck_name)
 
    ## the namespace for svg files
    ns = {'ns': 'http://www.w3.org/2000/svg'}
@@ -31,41 +43,39 @@ def main(how_many_cards, deck_name):
    defs = d('ns|defs', namespaces=ns)
 
    for suit in SUITS:
-      for card in ['1', '7', '8', '9', '10', 'jack', 'queen', 'king']:
+      for card in CARD_OFFSET.keys():
          card_group = d("#%s_%s" % (card, suit))
          defs.append(card_group)
 
-   ## remove card frame: you have a real piece of paper!
-   defs.append('<g id="cf"/>')
+   ## you have a real piece of paper and you must cut it, so let's redefine
+   ## the card frame as a set of four thin crosses.
+   defs.append('<path d="m 2,0 -4,0 m 2,2 0,-4 m 0,2 m 79,0 m 2,0 -4,0 m 2,2 0,-4 m 0,2 m 0,123 m 2,0 -4,0 m 2,2 0,-4 m 0,2 m -79,0 m 2,0 -4,0 m 2,2 0,-4 m 0,2 " id="cf" style="color:#000000;fill:none;stroke:#000000;stroke-width:0.3px;stroke-opacity:1" />')
 
    ## per suit, create a new svg document
    for suit in SUITS:
 
-      print('''<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1027" height="615" viewBox="0 0 1027 615" id="svg10047">
-  <metadata id="metadata16869">
-    <rdf:RDF>
-      <cc:Work rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>''')
+      result = pq(TEMPLATE)
 
       ## put defs at their place
-      print('''<defs>''')
-      print defs.html()
-      print "</defs>"
+      result.append(defs)
 
-      ## now use the cards
+      ## rescale the printable area, all this works if the cards are 79x123
+      ## pixels and you are printing on A4.
+      result.append('<g transform="matrix(2.8595951,0,0,2.8595951,6.1012654,3.4189498)" id="printable-layer">')
+
+      ## we add elements to the printable layer
+      print_area = result('#printable-layer')
+
+      ## put a white background, it's not strictly necessary, but makes viewing easier.
+      print_area.append('<rect x="0" y="0" width="237" height="369" fill="#ffffff"/>')
+
+      ## cards are 'use' of definitions, translated to their new position..
       for line in range(3):
          for i, card in enumerate(CARDS_PER_LINE[line]):
-            print '<use xlink:href="#%s_%s" transform="translate(%s,%s)"/>' % (card, suit, i * 79 - CARD_OFFSET[card], line * 123 - SUIT_OFFSET[suit])
+            print_area.append('<use xlink:href="#%s_%s" transform="translate(%s,%s)"/>' % (card, suit, i * 79 - CARD_OFFSET[card], line * 123 - SUIT_OFFSET[suit]))
 
-      ## and close the document
-      print "</svg>"
-      1/0
+      ## write the document
+      result.root.write("/tmp/%s.svg" % suit)
 
 
 if __name__ == '__main__':
