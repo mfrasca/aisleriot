@@ -6,10 +6,10 @@ usage
 -----
 the first stage of development is mostly a proof of concept:
 * choose the deck you prefer
-* decide if you need 9 or 12 cards per deck
+* decide how many cards per deck you want
 * invoke pyod informing it of your choices
 
-this produces 4 svg files, you can print them on A4 paper using inkscape or something else.
+this produces some svg files, you can print them on A4 paper using inkscape or something else.
 
 options
 -------
