@@ -14,21 +14,60 @@ CARDS_PER_LINE = {0: ['king', 'queen', 'jack'],
                   2: ['8', '7', '6'],
                   }
 
-if True:
-   ## portrait A4 - 3x3
-   TEMPLATE = '<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="744.09448" height="1052.3622" viewBox="-2 -2 756.65304 1063.7699" id="svg10047"/>'
-   PRINTABLE_LAYER = '<g transform="matrix(2.7166153,0,0,2.7166153,54.407601,28.669419)" id="printable-layer">'
-elif False:
-   ## portrait A3 5x5
-   TEMPLATE = '<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1052.3622" height="1488.189" viewBox="-2 -2 1070.1236 1504.3211" id="svg10047"/>'
-   PRINTABLE_LAYER = '<g transform="matrix(2.3455654,0,0,2.3455654,72.334116,28.899189)" id="printable-layer">'
-elif False:
-   ## landscape A4 4x8 
-   TEMPLATE = '<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1052.3622" height="744.09448" viewBox="0 0 1052.3622 744.09448" id="svg10047">'
-   PRINTABLE_LAYER = '<g transform="matrix(1.4379555,0,0,1.4379555,71.787154,18.310181)" id="g20880">'
+
+## indexed by page_code, the structure of each value is: the template for
+## the svg document, the printable layer, then a list of lists, each is a
+## page, in each page: lines, in each line: cards.
+TEMPLATES = { 0: ('<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="744.09448" height="1052.3622" viewBox="-2 -2 756.65304 1063.7699" id="svg10047"/>',
+                  '<g transform="matrix(2.7166153,0,0,2.7166153,54.407601,28.669419)" id="printable-layer">',
+                  [[['1_club', '7_club', '8_club'],
+                    ['9_club', '10_club', 'joker_black'],
+                    ['jack_club', 'queen_club', 'king_club']],
+                   [['1_spade', '7_spade', '8_spade'],
+                    ['9_spade', '10_spade', 'joker_black'],
+                    ['jack_spade', 'queen_spade', 'king_spade']],
+                   [['1_heart', '7_heart', '8_heart'],
+                    ['9_heart', '10_heart', 'joker_red'],
+                    ['jack_heart', 'queen_heart', 'king_heart']],
+                   [['1_diamond', '7_diamond', '8_diamond'],
+                    ['9_diamond', '10_diamond', 'joker_red'],
+                    ['jack_diamond', 'queen_diamond', 'king_diamond']],
+                   ]
+                  ),
+              1: ('<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1052.3622" height="1488.189" viewBox="-2 -2 1070.1236 1504.3211" id="svg10047"/>',
+                  '<g transform="matrix(2.3455654,0,0,2.3455654,72.334116,28.899189)" id="printable-layer">',
+                  [[['1_club', '7_club', '8_club', '9_club', '10_club'],
+                    ['1_club', '7_club', '8_club', '9_club', '10_club'],
+                    ['1_club', '7_club', '8_club', '9_club', '10_club'],
+                    ['jack_club', 'jack_club', 'queen_club', 'king_club', 'king_club'],
+                    ['jack_club', 'queen_club', 'queen_club', 'king_club', 'joker_black']],
+                   [['1_spade', '7_spade', '8_spade', '9_spade', '10_spade'],
+                    ['1_spade', '7_spade', '8_spade', '9_spade', '10_spade'],
+                    ['1_spade', '7_spade', '8_spade', '9_spade', '10_spade'],
+                    ['jack_spade', 'jack_spade', 'queen_spade', 'king_spade', 'king_spade'],
+                    ['jack_spade', 'queen_spade', 'queen_spade', 'king_spade', 'joker_black']],
+                   [['1_heart', '7_heart', '8_heart', '9_heart', '10_heart'],
+                    ['1_heart', '7_heart', '8_heart', '9_heart', '10_heart'],
+                    ['1_heart', '7_heart', '8_heart', '9_heart', '10_heart'],
+                    ['jack_heart', 'jack_heart', 'queen_heart', 'king_heart', 'king_heart'],
+                    ['jack_heart', 'queen_heart', 'queen_heart', 'king_heart', 'joker_red']],
+                   [['1_diamond', '7_diamond', '8_diamond', '9_diamond', '10_diamond'],
+                    ['1_diamond', '7_diamond', '8_diamond', '9_diamond', '10_diamond'],
+                    ['1_diamond', '7_diamond', '8_diamond', '9_diamond', '10_diamond'],
+                    ['jack_diamond', 'jack_diamond', 'queen_diamond', 'king_diamond', 'king_diamond'],
+                    ['jack_diamond', 'queen_diamond', 'queen_diamond', 'king_diamond', 'joker_red']],
+                   ]
+                  ),
+              2: ('<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1052.3622" height="744.09448" viewBox="0 0 1052.3622 744.09448" id="svg10047"/>',
+                  '<g transform="matrix(1.4379555,0,0,1.4379555,71.787154,18.310181)" id="printable-layer">',
+                  [[['1_club', '7_club', '8_club', '9_club', '10_club', 'jack_club', 'queen_club', 'king_club', ],
+                    ['1_spade', '7_spade', '8_spade', '9_spade', '10_spade', 'jack_spade', 'queen_spade', 'king_spade', ],
+                    ['1_heart', '7_heart', '8_heart', '9_heart', '10_heart', 'jack_heart', 'queen_heart', 'king_heart', ],
+                    ['1_diamond', '7_diamond', '8_diamond', '9_diamond', '10_diamond', 'jack_diamond', 'queen_diamond', 'king_diamond']]]),
+              }
 
 
-def main(how_many_cards, deck_name):
+def main(page_code, deck_name):
    """print the desired cards of the deck
 
    locate the deck, read its definitions and all of its cards, decide which
@@ -55,17 +94,17 @@ def main(how_many_cards, deck_name):
    ## the card frame as a set of four thin crosses.
    defs.append('<path d="m 2,0 -4,0 m 2,2 0,-4 m 0,2 m 79,0 m 2,0 -4,0 m 2,2 0,-4 m 0,2 m 0,123 m 2,0 -4,0 m 2,2 0,-4 m 0,2 m -79,0 m 2,0 -4,0 m 2,2 0,-4 m 0,2 " id="cf" style="color:#000000;fill:none;stroke:#000000;stroke-width:0.3px;stroke-opacity:1" />')
 
-   ## per suit, create a new svg document
-   for suit in SUITS:
-
-      result = pq(TEMPLATE)
+   ## now iterate on the pages as in TEMPLATES...
+   for page_no, page in enumerate(TEMPLATES[page_code][2]):
+      ## each page is a new svg document
+      result = pq(TEMPLATES[page_code][0])
 
       ## put defs at their place
       result.append(defs)
 
       ## rescale the printable area, all this works if the cards are 79x123
       ## pixels and you are printing on A4.
-      result.append(PRINTABLE_LAYER)
+      result.append(TEMPLATES[page_code][1])
 
       ## we add elements to the printable layer
       print_area = result('#printable-layer')
@@ -74,12 +113,13 @@ def main(how_many_cards, deck_name):
       print_area.append('<rect x="0" y="0" width="237" height="369" fill="#ffffff"/>')
 
       ## cards are 'use' of definitions, translated to their new position..
-      for line in range(3):
-         for i, card in enumerate(CARDS_PER_LINE[line]):
-            print_area.append('<use xlink:href="#%s_%s" transform="translate(%s,%s)"/>' % (card, suit, i * 79 - CARD_OFFSET[card], line * 123 - SUIT_OFFSET[suit]))
+      for line_no, line in enumerate(page):
+         for i, card_suit in enumerate(line):
+            card, suit = card_suit.split('_')
+            print_area.append('<use xlink:href="#%s" transform="translate(%s,%s)"/>' % (card_suit, i * 79 - CARD_OFFSET.get(card, {'black': 0, 'red': 79}.get(suit, 0)), line_no * 123 - SUIT_OFFSET.get(suit, 492)))
 
       ## write the document
-      result.root.write("/tmp/%s.svg" % suit)
+      result.root.write("/tmp/%s.svg" % page_no)
 
 
 if __name__ == '__main__':
