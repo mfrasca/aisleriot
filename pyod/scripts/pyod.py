@@ -3,6 +3,8 @@
 import argparse
 from pyquery import PyQuery as pq
 
+
+## global definitions
 SUITS = ['club', 'spade', 'heart', 'diamond']
 SUIT_OFFSET = {'club': 0, 'spade': 369, 'heart': 246, 'diamond': 123}
 CARD_OFFSET = dict(("%d" % (i + 1), i * 79) for i in range(10))
@@ -23,6 +25,7 @@ TEMPLATE = '''<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     </rdf:RDF>
   </metadata>
 </svg>'''
+
 
 def main(how_many_cards, deck_name):
    """print the desired cards of the deck
@@ -61,7 +64,7 @@ def main(how_many_cards, deck_name):
 
       ## rescale the printable area, all this works if the cards are 79x123
       ## pixels and you are printing on A4.
-      result.append('<g transform="matrix(2.8595951,0,0,2.8595951,6.1012654,3.4189498)" id="printable-layer">')
+      result.append('<g transform="matrix(2.71200309483,0,0,2.71200309483,6.1012654,3.4189498)" id="printable-layer">')
 
       ## we add elements to the printable layer
       print_area = result('#printable-layer')
