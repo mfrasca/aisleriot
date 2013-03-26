@@ -85,10 +85,14 @@ def main(page_code, deck_name):
    ## get the definitions - will be repeated in each of our output files
    defs = d('ns|defs', namespaces=ns)
 
-   for suit in SUITS:
-      for card in CARD_OFFSET.keys():
-         card_group = d("#%s_%s" % (card, suit))
-         defs.append(card_group)
+   used_cards = set()
+   for page in TEMPLATES[page_code][2]:
+      for line in page:
+         used_cards.update(line)
+            
+   for card_suit in used_cards:
+      card_group = d("#%s" % card_suit)
+      defs.append(card_group)
 
    ## you have a real piece of paper and you must cut it, so let's redefine
    ## the card frame as a set of four thin crosses.
@@ -116,7 +120,10 @@ def main(page_code, deck_name):
       for line_no, line in enumerate(page):
          for i, card_suit in enumerate(line):
             card, suit = card_suit.split('_')
-            print_area.append('<use xlink:href="#%s" transform="translate(%s,%s)"/>' % (card_suit, i * 79 - CARD_OFFSET.get(card, {'black': 0, 'red': 79}.get(suit, 0)), line_no * 123 - SUIT_OFFSET.get(suit, 492)))
+            print_area.append('<use xlink:href="#%s" transform="translate(%s,%s)"/>' %
+                              (card_suit, 
+                               i * 79 - CARD_OFFSET.get(card, {'black': 0, 'red': 79}.get(suit, 0)), 
+                               line_no * 123 - SUIT_OFFSET.get(suit, 492)))
 
       ## write the document
       result.root.write("/tmp/%s.svg" % page_no)
