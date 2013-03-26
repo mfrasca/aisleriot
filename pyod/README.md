@@ -9,7 +9,9 @@ the first stage of development is mostly a proof of concept:
 * decide how many cards per deck you want
 * invoke pyod informing it of your choices
 
-this produces some svg files, you can print them on A4 paper using inkscape or something else.
+this produces some svg files, you can print them on A4 paper using inkscape, imagemagick 'convert', or something else.
+
+* for i in *.svg; do convert -density 600 $i $(basename $i .svg).pdf; done
 
 options
 -------

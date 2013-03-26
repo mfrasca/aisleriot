@@ -3,6 +3,8 @@
 import argparse
 from pyquery import PyQuery as pq
 
+
+## global definitions
 SUITS = ['club', 'spade', 'heart', 'diamond']
 SUIT_OFFSET = {'club': 0, 'spade': 369, 'heart': 246, 'diamond': 123}
 CARD_OFFSET = dict(("%d" % (i + 1), i * 79) for i in range(10))
@@ -19,6 +21,7 @@ TEMPLATE = '''<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 ## unused template for A3
 TEMPLATE_A3 = '''<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1052.3622" height="1488.189" viewBox="-2 -2 1070.1236 1504.3211" id="svg10047"/>'''
+
 
 
 def main(how_many_cards, deck_name):
