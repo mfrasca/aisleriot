@@ -90,6 +90,36 @@ TEMPLATES = { 'a4-8j':
                     ['5_diamond', '4_diamond', '3_diamond']],
                    ]
                   ),
+              'a3-12':
+                 ('<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1052.3622" height="1488.189" viewBox="-2 -2 1070.1236 1504.3211" id="svg10047"/>',
+                  '<g transform="matrix(2.3455654,0,0,2.3455654,72.334116,28.899189)" id="printable-layer">',
+                  [[['1_club', '7_club', '8_club', '9_club', '10_club'],
+                    ['3_club', '4_club', '5_club', '6_club', 'jack_club'],
+                    ['queen_club', 'king_club', 'joker_black', 'king_spade', 'queen_spade'],
+                    ['jack_spade', '6_spade', '5_spade', '4_spade', '3_spade'],
+                    ['10_spade', '9_spade', '8_spade', '7_spade', '1_spade']],
+                   [['1_heart', '7_heart', '8_heart', '9_heart', '10_heart'],
+                    ['3_heart', '4_heart', '5_heart', '6_heart', 'jack_heart'],
+                    ['queen_heart', 'king_heart', 'joker_red', 'king_diamond', 'queen_diamond'],
+                    ['jack_diamond', '6_diamond', '5_diamond', '4_diamond', '3_diamond'],
+                    ['10_diamond', '9_diamond', '8_diamond', '7_diamond', '1_diamond']],
+                   ]
+                  ),
+              'a3-12l':
+                 ('<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1052.3622" height="1488.189" viewBox="-2 -2 1070.1236 1504.3211" id="svg10047"/>',
+                  '<g transform="matrix(2.3455654,0,0,2.3455654,72.334116,28.899189)" id="printable-layer">',
+                  [[['1_club', '7_club', '8_club', '9_club', '2_club'],
+                    ['3_club', '4_club', '5_club', '6_club', 'jack_club'],
+                    ['queen_club', 'king_club', 'joker_black', 'king_spade', 'queen_spade'],
+                    ['jack_spade', '6_spade', '5_spade', '4_spade', '3_spade'],
+                    ['2_spade', '9_spade', '8_spade', '7_spade', '1_spade']],
+                   [['1_heart', '7_heart', '8_heart', '9_heart', '2_heart'],
+                    ['3_heart', '4_heart', '5_heart', '6_heart', 'jack_heart'],
+                    ['queen_heart', 'king_heart', 'joker_red', 'king_diamond', 'queen_diamond'],
+                    ['jack_diamond', '6_diamond', '5_diamond', '4_diamond', '3_diamond'],
+                    ['2_diamond', '9_diamond', '8_diamond', '7_diamond', '1_diamond']],
+                   ]
+                  ),
               }
 
 
@@ -163,6 +193,8 @@ def main(page_code, deck_name):
       ## also the back page is a svg document
       result = pq(TEMPLATES[page_code][0])
 
+      ## remove the cutting helpers on the back
+      defs.remove("#cf")
       ## put defs at their place
       result.append(defs)
 
