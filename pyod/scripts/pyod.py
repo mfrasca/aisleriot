@@ -121,9 +121,12 @@ def main(page_code, deck_name):
    
    defs.append(d("#back"))
 
+   ## remove the card frame definition, not useful on paper
+   defs.remove("#cf")
+
    ## you have a real piece of paper and you must cut it, so let's redefine
    ## the card frame as a set of four thin crosses.
-   defs.append('<path d="m 2,0 -4,0 m 2,2 0,-4 m 0,2 m 79,0 m 2,0 -4,0 m 2,2 0,-4 m 0,2 m 0,123 m 2,0 -4,0 m 2,2 0,-4 m 0,2 m -79,0 m 2,0 -4,0 m 2,2 0,-4 m 0,2 " id="cf" style="color:#000000;fill:none;stroke:#000000;stroke-width:0.3px;stroke-opacity:1" />')
+   defs.append('<path d="m 2,0 -4,0 m 2,2 0,-4 m 0,2 m 79,0 m 2,0 -4,0 m 2,2 0,-4 m 0,2 m 0,123 m 2,0 -4,0 m 2,2 0,-4 m 0,2 m -79,0 m 2,0 -4,0 m 2,2 0,-4 m 0,2 " id="cf" style="color:#000000;fill:none;stroke:#000000;stroke-width:0.1px;stroke-opacity:1" />')
 
    ## now iterate on the pages as in TEMPLATES...
    for page_no, page in enumerate(TEMPLATES[page_code][2]):
