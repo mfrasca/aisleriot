@@ -60,6 +60,16 @@ TEMPLATES = { 'a4-8j':
                     ['jack_diamond', 'queen_diamond', 'queen_diamond', 'king_diamond', 'joker_red']],
                    ]
                   ),
+              'a4-10':
+                 ('<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="744.09448" height="1052.3622" viewBox="0 0 744.09448 1052.3622" id="svg10047"/>',
+                  '<g transform="matrix(1.2184,0,0,1.3187,35.15964,39.5808)" id="printable-layer">',
+                  [[['jack_club', 'queen_club', 'king_club', 'jack_spade', 'queen_spade', 'king_spade', 'joker_red'],
+                    ['jack_heart', 'queen_heart', 'king_heart', 'jack_diamond', 'queen_diamond', 'king_diamond', 'joker_black'],
+                    ['1_club', '2_club', '3_club', '4_club', '5_club', '6_club', '7_club'],
+                    ['1_spade', '2_spade', '3_spade', '4_spade', '5_spade', '6_spade', '7_spade'],
+                    ['1_heart', '2_heart', '3_heart', '4_heart', '5_heart', '6_heart', '7_heart'],
+                    ['1_diamond', '2_diamond', '3_diamond', '4_diamond', '5_diamond', '6_diamond', '7_diamond'],
+                 ]]),
               'a4-8':
                  ('<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1052.3622" height="744.09448" viewBox="0 0 1052.3622 744.09448" id="svg10047"/>',
                   '<g transform="matrix(1.4379555,0,0,1.4379555,71.787154,18.310181)" id="printable-layer">',
@@ -119,6 +129,13 @@ TEMPLATES = { 'a4-8j':
                     ['jack_diamond', '6_diamond', '5_diamond', '4_diamond', '3_diamond'],
                     ['2_diamond', '9_diamond', '8_diamond', '7_diamond', '1_diamond']],
                    ]
+                  ),
+              'sample':
+                 ('<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1284" height="728" viewBox="0 0 1284 728" id="svg10047"><svg:defs id="defs7778">',
+                  '<g transform="scale(2.2)matrix(1.2184,0,0,1.3187,4,4)" id="printable-layer">',
+                  [[['king_club', 'queen_club', 'jack_club', 'king_spade', 'queen_spade', 'jack_spade'],
+                    ['king_heart', 'queen_heart', 'jack_heart', 'king_diamond', 'queen_diamond', 'jack_diamond'],
+                   ]]
                   ),
               'a3-13':
                  ('<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1052.3622" height="1488.189" viewBox="-2 -2 1070.1236 1504.3211" id="svg10047"/>',
@@ -270,7 +287,7 @@ def main(page_code, deck_name):
 
 if __name__ == '__main__':
    parser = argparse.ArgumentParser(description='print your own deck.')
-   parser.add_argument('cards', type=str, help=('format to use. one of: %s' % ", ".join(TEMPLATES.keys())))
+   parser.add_argument('cards', type=str, help=('format to use. one of: %s' % ", ".join(sorted(TEMPLATES.keys()))))
    parser.add_argument('deck', type=str, help='the name of the deck.')
    args = parser.parse_args()
    main(args.cards, args.deck)
