@@ -77,6 +77,32 @@ TEMPLATES = { 'a4-8j':
                     ['1_spade', '7_spade', '8_spade', '9_spade', '10_spade', 'jack_spade', 'queen_spade', 'king_spade', ],
                     ['1_heart', '7_heart', '8_heart', '9_heart', '10_heart', 'jack_heart', 'queen_heart', 'king_heart', ],
                     ['1_diamond', '7_diamond', '8_diamond', '9_diamond', '10_diamond', 'jack_diamond', 'queen_diamond', 'king_diamond']]]),
+              'a3-10l':
+                 ('<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1052.3622" height="1488.189" viewBox="-2 -2 1070.1236 1504.3211" id="svg10047"/>',
+                  '<g transform="matrix(2.3455654,0,0,2.8465274,69.812633,49.914799)" id="printable-layer">',
+                  [[['1_club', '2_club', '3_club', '4_club', '5_club'],
+                    ['1_spade', '2_spade', '3_spade', '4_spade', '5_spade'],
+                    ['1_heart', '2_heart', '3_heart', '4_heart', '5_heart'],
+                    ['1_diamond', '2_diamond', '3_diamond', '4_diamond', '5_diamond']],
+                   [['6_club', '7_club', 'jack_club', 'queen_club', 'king_club'],
+                    ['6_spade', '7_spade', 'jack_spade', 'queen_spade', 'king_spade'],
+                    ['6_heart', '7_heart', 'jack_heart', 'queen_heart', 'king_heart'],
+                    ['6_diamond', '7_diamond', 'jack_diamond', 'queen_diamond', 'king_diamond']],
+                   ]
+                  ),
+              'a3-10s':
+                 ('<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1052.3622" height="1488.189" viewBox="-2 -2 1070.1236 1504.3211" id="svg10047"/>',
+                  '<g transform="matrix(2.3455654,0,0,2.8465274,69.812633,49.914799)" id="printable-layer">',
+                  [[['1_club', 'joker_black', '10_club', '9_club', '8_club'],
+                    ['1_spade', 'joker_black', '10_spade', '9_spade', '8_spade'],
+                    ['1_heart', 'joker_red', '10_heart', '9_heart', '8_heart'],
+                    ['1_diamond', 'joker_red', '10_diamond', '9_diamond', '8_diamond']],
+                   [['6_club', '7_club', 'jack_club', 'queen_club', 'king_club'],
+                    ['6_spade', '7_spade', 'jack_spade', 'queen_spade', 'king_spade'],
+                    ['6_heart', '7_heart', 'jack_heart', 'queen_heart', 'king_heart'],
+                    ['6_diamond', '7_diamond', 'jack_diamond', 'queen_diamond', 'king_diamond']],
+                   ]
+                  ),
               'a4-13j':
                  ('<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="744.09448" height="1052.3622" viewBox="-2 -2 756.65304 1063.7699" id="svg10047"/>',
                   '<g transform="matrix(2.7166153,0,0,2.7166153,54.407601,28.669419)" id="printable-layer">',
